@@ -132,7 +132,7 @@ STORES_SPAIN = [
     [False, 'https://www.game.es/HARDWARE/CONSOLA/PLAYSTATION-5/CONSOLA-PLAYSTATION-5/183224', '//span[contains(@class, "sr-only")]/text()[last()]'],
     #corte ingles
     #[False, 'https://www.elcorteingles.es/videojuegos/ps5/consolas/', '//span[contains(@class, "sr-only")]/text()[last()]'],
-    [False, 'https://www.elcorteingles.es/videojuegos/nintendo-switch/consolas/?gclsrc=aw.ds&nobeta=false', '//a[contains(@class, "js-add-to-cart")]/span[@class="tooltip"]/text()'],
+    #[False, 'https://www.elcorteingles.es/videojuegos/nintendo-switch/consolas/?gclsrc=aw.ds&nobeta=false', '//a[contains(@class, "js-add-to-cart")]/span[@class="tooltip"]/text()'],
 
     #Pc componentes
     #[False, 'https://www.pccomponentes.com/videoconsolas-ps5', '//span[contains(@class, "sr-only")]/text()[last()]'],
