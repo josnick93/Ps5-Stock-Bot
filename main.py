@@ -34,7 +34,7 @@ def parseJumbo(raw):
 
 GARBAGE = ['nintendo','marvels', 'sackboy', 'souls', 'morales', 'dualsense', 'juego', 'ps4', 'cámara', 'camara', 'camera', 'control', 'joystick', 'dualshock', 'parlante', 'celular', 'funda', 'lavarropas', 'cocina', 'plancha', 'auriculares', 'auricular', 'headset', 'kombat', 'android', 'nes', 'retro', 'pc', 'mixer', 'xbox', 'microsoft', 'audio', 'fighter', 'nba', 'vr', 'meses', 'posavasos', 'lámpara', 'remote', 'hd', 'kanji', 'stickers', 'duty', 'alien', 'lente', 'noga', 'torre', 'reflex', 'barra', 'compacta', 'minicomponente', 'atari', 'bateria', 'batería', 'ce7', 'radio', 'multimedia', 'reloj', 'cargador', 'nioh', 'pack', 'ratchet', 'returnal', 'nisuta', 'balanceado', 'calefactores', 'acolchado', 'brazos', 'cartuchera', 'tsushima', 'deathloop', 'stranding', 'fifa', 'kd-75x80j', 'xr-65a80j', 'resident', 'portatil']
 
-KEYWORDS = ['playstation', 'ps5', 'consola', 'console', 'sony', 'comprar','stock' ,'Fnac.es']
+KEYWORDS = ['playstation', 'ps5', 'consola', 'console', 'sony', 'comprar','stock' ,'Fnac.es','€']
 #KEYWORDS = ['nintendo', 'switch','stock' ,'Fnac.es']
 
 
@@ -132,16 +132,19 @@ STORES_SPAIN = [
     [False, 'https://www.game.es/HARDWARE/CONSOLA/PLAYSTATION-5/CONSOLA-PLAYSTATION-5/183224', '//span[contains(@class, "sr-only")]/text()[last()]'],
     #corte ingles
     #[False, 'https://www.elcorteingles.es/videojuegos/ps5/consolas/', '//span[contains(@class, "sr-only")]/text()[last()]'],
-    #[False, 'https://www.elcorteingles.es/videojuegos/nintendo-switch/consolas/?gclsrc=aw.ds&nobeta=false', '//a[contains(@class, "js-add-to-cart")]/span[@class="tooltip"]/text()'],
+    [False, 'https://www.elcorteingles.es/videojuegos/nintendo-switch/consolas/?gclsrc=aw.ds&nobeta=false', '//a[contains(@class, "js-add-to-cart")]/span[@class="tooltip"]/text()'],
 
     #Pc componentes
     #[False, 'https://www.pccomponentes.com/videoconsolas-ps5', '//span[contains(@class, "sr-only")]/text()[last()]'],
-    #[False, 'https://www.pccomponentes.com/videoconsolas-nintendo-switch', '//div[contains(@class, "cy-product-availability-date")]/text()[last()]'],
+    [False, 'https://www.pccomponentes.com/videoconsolas-nintendo-switch', '//div[contains(@class, "cy-product-availability-date")]/text()[last()]'],
 
     #fnac
     [False, 'https://www.fnac.es/n127487/Playstation/Consolas-PS5', '//span[contains(@class, "f-buyBox-availabilityStatus-available")]/text()[last()]'],
     #[False, 'https://www.fnac.es/n127519/Nintendo/Consolas-Nintendo-Switch', '//span[contains(@class, "f-buyBox-availabilityStatus-available")]/text()[last()]'],
 
+    #amazon
+    [False, 'https://www.amazon.es/s?k=consola+playstation+5&i=videogames&rh=n%3A20938002031%2Cp_36%3A30000-&s=date-desc-rank&__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&qid=1638816318&rnid=831274031&ref=sr_st_date-desc-rank', '//span[contains(@class, "a-price-symbol")]/text()[last()]'],
+    #[False, 'https://www.amazon.es/b?ie=UTF8&node=12366199031', '//span[contains(@class, "a-price-symbol")]/text()[last()]'],
 
 ]
 
