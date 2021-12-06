@@ -34,8 +34,8 @@ def parseJumbo(raw):
 
 GARBAGE = ['nintendo','marvels', 'sackboy', 'souls', 'morales', 'dualsense', 'juego', 'ps4', 'cámara', 'camara', 'camera', 'control', 'joystick', 'dualshock', 'parlante', 'celular', 'funda', 'lavarropas', 'cocina', 'plancha', 'auriculares', 'auricular', 'headset', 'kombat', 'android', 'nes', 'retro', 'pc', 'mixer', 'xbox', 'microsoft', 'audio', 'fighter', 'nba', 'vr', 'meses', 'posavasos', 'lámpara', 'remote', 'hd', 'kanji', 'stickers', 'duty', 'alien', 'lente', 'noga', 'torre', 'reflex', 'barra', 'compacta', 'minicomponente', 'atari', 'bateria', 'batería', 'ce7', 'radio', 'multimedia', 'reloj', 'cargador', 'nioh', 'pack', 'ratchet', 'returnal', 'nisuta', 'balanceado', 'calefactores', 'acolchado', 'brazos', 'cartuchera', 'tsushima', 'deathloop', 'stranding', 'fifa', 'kd-75x80j', 'xr-65a80j', 'resident', 'portatil']
 
-KEYWORDS = ['playstation', 'ps5', 'consola', 'console', 'sony', 'comprar']
-#KEYWORDS = ['nintendo', 'switch']
+KEYWORDS = ['playstation', 'ps5', 'consola', 'console', 'sony', 'comprar','stock' ,'Fnac.es']
+#KEYWORDS = ['nintendo', 'switch','stock' ,'Fnac.es']
 
 
 STORES = [
@@ -125,7 +125,7 @@ STORES_SPAIN = [
 
     #carrefour
     [False, 'https://www.carrefour.es/consolas-ps5/N-brkb0gZ18dif5/c', '//*[contains(@class, "product-card__title")]/a/text()'],
-    [False, 'https://www.carrefour.es/consolas-switch/N-brkb0gZc4yhgj/c', '//a[contains(@class, "product-card__title")]//text()'],
+    #[False, 'https://www.carrefour.es/consolas-switch/N-brkb0gZc4yhgj/c', '//a[contains(@class, "product-card__title")]//text()'],
 
     #game
     [False, 'https://www.game.es/HARDWARE/PACK-CONSOLA/PLAYSTATION-5/PLAYSTATION-5-RATCHET-AND-CLANK-UNA-DIMENSION-APARTE/190928', '//span[contains(@class, "sr-only")]/text()[last()]'],
@@ -136,7 +136,11 @@ STORES_SPAIN = [
 
     #Pc componentes
     #[False, 'https://www.pccomponentes.com/videoconsolas-ps5', '//span[contains(@class, "sr-only")]/text()[last()]'],
-    [False, 'https://www.pccomponentes.com/videoconsolas-nintendo-switch', '//div[contains(@class, "cy-product-availability-date")]/text()[last()]'],
+    #[False, 'https://www.pccomponentes.com/videoconsolas-nintendo-switch', '//div[contains(@class, "cy-product-availability-date")]/text()[last()]'],
+
+    #fnac
+    [False, 'https://www.fnac.es/n127487/Playstation/Consolas-PS5', '//span[contains(@class, "f-buyBox-availabilityStatus-available")]/text()[last()]'],
+    #[False, 'https://www.fnac.es/n127519/Nintendo/Consolas-Nintendo-Switch', '//span[contains(@class, "f-buyBox-availabilityStatus-available")]/text()[last()]'],
 
 
 ]
@@ -191,6 +195,7 @@ def scrap(store):
         html = scraper.get(url)
         doc = lxml.html.fromstring(html.content)
         items = doc.xpath(xpath)
+        print(items)
     return { "store": url, "items": items }
 
 
