@@ -147,8 +147,8 @@ STORES_SPAIN = [
     #[False, 'https://www.amazon.es/b?ie=UTF8&node=12366199031', '//span[contains(@class, "a-price-symbol")]/text()[last()]'],
 
     #Ardistel
-    #[False, 'https://www.ardistel.com/buscar.asp?search=CONSOLA+PS5', '//span[contains(@class, "cart")]/text()[last()]'],
-    [False, 'https://www.ardistel.com/buscar.asp?search=PSN+PLUS', '//a[contains(@class, "cart")]/text()[last()]'],
+    [False, 'https://www.ardistel.com/buscar.asp?search=CONSOLA+PS5', '//span[contains(@class, "cart")]/text()[last()]'],
+    #[False, 'https://www.ardistel.com/buscar.asp?search=PSN+PLUS', '//a[contains(@class, "cart")]/text()[last()]'],
 
 
 ]
