@@ -146,6 +146,11 @@ STORES_SPAIN = [
     [False, 'https://www.amazon.es/s?k=consola+playstation+5&i=videogames&rh=n%3A20938002031%2Cp_36%3A30000-&s=date-desc-rank&__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&qid=1638816318&rnid=831274031&ref=sr_st_date-desc-rank', '//span[contains(@class, "a-price-symbol")]/text()[last()]'],
     #[False, 'https://www.amazon.es/b?ie=UTF8&node=12366199031', '//span[contains(@class, "a-price-symbol")]/text()[last()]'],
 
+    #Ardistel
+    #[False, 'https://www.ardistel.com/buscar.asp?search=CONSOLA+PS5', '//span[contains(@class, "cart")]/text()[last()]'],
+    [False, 'https://www.ardistel.com/buscar.asp?search=PSN+PLUS', '//a[contains(@class, "cart")]/text()[last()]'],
+
+
 ]
 
 def main():
