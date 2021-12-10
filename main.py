@@ -123,8 +123,7 @@ STORES = [
 
 STORES_SPAIN = [
 
-    #carrefour
-    [False, 'https://www.carrefour.es/consolas-ps5/N-brkb0gZ18dif5/c', '//*[contains(@class, "product-card__title")]/a/text()'],
+
     #[False, 'https://www.carrefour.es/consolas-switch/N-brkb0gZc4yhgj/c', '//a[contains(@class, "product-card__title")]//text()'],
 
     #game
@@ -150,6 +149,8 @@ STORES_SPAIN = [
     [False, 'https://www.ardistel.com/buscar.asp?search=CONSOLA+PS5', '//span[contains(@class, "cart")]/text()[last()]'],
     #[False, 'https://www.ardistel.com/buscar.asp?search=PSN+PLUS', '//a[contains(@class, "cart")]/text()[last()]'],
 
+    #carrefour
+    [False, 'https://www.carrefour.es/consolas-ps5/N-brkb0gZ18dif5/c', '//*[contains(@class, "product-card__title")]/a/text()'],
 
 ]
 
@@ -225,5 +226,8 @@ def telegram_bot_sendtext(bot_message, bot_token, recipients):
 
 if __name__ == '__main__':
     while 1:
-        main()
-        time.sleep(random.randint(15, 45))
+        try:
+            main()
+            time.sleep(random.randint(45, 90))
+        except Exception:
+            pass
