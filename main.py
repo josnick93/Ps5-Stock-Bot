@@ -230,4 +230,4 @@ if __name__ == '__main__':
             main()
             time.sleep(random.randint(45, 90))
         except Exception:
-            pass
+            continue
