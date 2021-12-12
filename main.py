@@ -265,9 +265,4 @@ def telegram_bot_sendtext(bot_message, bot_token, recipients):
 
 
 if __name__ == '__main__':
-    while 1:
-        try:
-            main()
-            time.sleep(random.randint(45, 90))
-        except Exception:
-            continue
+    main()
