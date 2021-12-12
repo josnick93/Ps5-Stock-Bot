@@ -31,10 +31,29 @@ def parseJumbo(raw):
 
     return items
 
+def parseWakkap(raw):
+    stream = json.loads(raw)
 
-GARBAGE = ['nintendo','marvels', 'sackboy', 'souls', 'morales', 'dualsense', 'juego', 'ps4', 'cámara', 'camara', 'camera', 'control', 'joystick', 'dualshock', 'parlante', 'celular', 'funda', 'lavarropas', 'cocina', 'plancha', 'auriculares', 'auricular', 'headset', 'kombat', 'android', 'nes', 'retro', 'pc', 'mixer', 'xbox', 'microsoft', 'audio', 'fighter', 'nba', 'vr', 'meses', 'posavasos', 'lámpara', 'remote', 'hd', 'kanji', 'stickers', 'duty', 'alien', 'lente', 'noga', 'torre', 'reflex', 'barra', 'compacta', 'minicomponente', 'atari', 'bateria', 'batería', 'ce7', 'radio', 'multimedia', 'reloj', 'cargador', 'nioh', 'pack', 'ratchet', 'returnal', 'nisuta', 'balanceado', 'calefactores', 'acolchado', 'brazos', 'cartuchera', 'tsushima', 'deathloop', 'stranding', 'fifa', 'kd-75x80j', 'xr-65a80j', 'resident', 'portatil']
+    items = []
+    for element in stream["data"]:
+        if float(element["minPrice"]) > 400.0 :
+            items.append(element["name"])
+    return items
 
-KEYWORDS = ['playstation', 'ps5', 'consola', 'console', 'sony', 'comprar','stock' ,'Fnac.es','€']
+def parseXtralife(raw):
+    stream = json.loads(raw)
+
+    items = []
+    
+    for element in stream["body"]["members"]["results"]:
+        if element["disponibility"]["disponibility"] != "out_of_stock" and element["disponibility"]["disponibility"] != "reservation_out_of_stock":
+            items.append(element["name"])
+    return items
+
+
+GARBAGE = ['cascos','nintendo','marvels', 'sackboy', 'souls', 'morales', 'dualsense', 'juego', 'ps4', 'cámara', 'camara', 'camera', 'control', 'joystick', 'dualshock', 'parlante', 'celular', 'funda', 'lavarropas', 'cocina', 'plancha', 'auriculares', 'auricular', 'headset', 'kombat', 'android', 'nes', 'retro', 'pc', 'mixer', 'xbox', 'microsoft', 'audio', 'fighter', 'nba', 'vr', 'meses', 'posavasos', 'lámpara', 'remote', 'hd', 'kanji', 'stickers', 'duty', 'alien', 'lente', 'noga', 'torre', 'reflex', 'barra', 'compacta', 'minicomponente', 'atari', 'bateria', 'batería', 'ce7', 'radio', 'multimedia', 'reloj', 'cargador', 'nioh', 'pack', 'ratchet', 'returnal', 'nisuta', 'balanceado', 'calefactores', 'acolchado', 'brazos', 'cartuchera', 'tsushima', 'deathloop', 'stranding', 'fifa', 'kd-75x80j', 'xr-65a80j', 'resident', 'portatil']
+
+KEYWORDS = ['playstation', 'ps5', 'consola', 'console', 'sony', 'comprar','stock' ,'Fnac.es','€','carrito']
 #KEYWORDS = ['nintendo', 'switch','stock' ,'Fnac.es']
 
 
@@ -119,6 +138,11 @@ STORES = [
     # Cetrogar
     #
     [False, 'https://www.cetrogar.com.ar/catalogsearch/result/?q=ps5', '*//a[@class="product-item-link"]/text()'],
+
+    #Xtralife
+    
+    [True, 'https://api.xtralife.com/public-api/v1/group?storefront_id=1&id=1629&members%5Border%5D%5Bby%5D=&members%5Border%5D%5Btype%5D=DESC&members%5Bpage%5D=1&members%5Bhow_many%5D=24&members%5Bfilters%5D=%5B%5D', '*//a[@class="product-item-link"]/text()'],
+
 ]
 
 STORES_SPAIN = [
@@ -151,6 +175,22 @@ STORES_SPAIN = [
 
     #carrefour
     [False, 'https://www.carrefour.es/consolas-ps5/N-brkb0gZ18dif5/c', '//*[contains(@class, "product-card__title")]/a/text()'],
+
+    #the shop gamer
+    [False, 'https://theshopgamer.com/es/154-consolas-ps5', '//h2[contains(@class, "product-title")]/a/text()'],
+    #[False, 'https://theshopgamer.com/es/131-consolas-switch', '//h2[contains(@class, "product-title")]/a/text()'],
+
+    #Wakkap
+    #[False, 'https://wakkap.com/search/consola%20ps5/filter/on-sale', '//div[contains(@class, "title")]/text()'],
+    [True, 'https://api.wakkap.com/v2/items/search/Consola%20ps5/page/1/per/20', parseWakkap],
+
+    #worten
+    [False, 'https://www.worten.es/productos/consolas-juegos/playstation/consola/consola-ps5-825gb-7196053', '//button[contains(@class, "checkout-button")]/text()'],
+
+    #Xtralife
+    [True, 'https://api.xtralife.com/public-api/v1/group?storefront_id=1&id=1629&members%5Border%5D%5Bby%5D=&members%5Border%5D%5Btype%5D=DESC&members%5Bpage%5D=1&members%5Bhow_many%5D=24&members%5Bfilters%5D=%5B%5D', parseXtralife],
+
+    
 
 ]
 
@@ -196,7 +236,7 @@ def scrap(store):
     if isJson:
         callback = store[2]
         json = requests.get(url).content
-        print(json)
+        #print(json)
         items = callback(json)
     else:
         xpath = store[2]
